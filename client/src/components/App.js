@@ -1,14 +1,14 @@
-import { useState } from "react";
 import Login from "./Login/Login";
+import useLocalStorage from "../hooks/useLocalStorage";
+import Dashboard from "./Dashboard/Dashboard";
 
 function App() {
-  const [userName, setUserName] = useState();
+  const [userName, setUserName] = useLocalStorage("username");
   console.log(userName);
-  return (
-    <div className="App">
-    {userName}
-      <Login onSubmitId={setUserName}/>
-    </div>
+  return userName ? (
+    <Dashboard id={userName} />
+  ) : (
+    <Login onSubmitId={setUserName} />
   );
 }
 
