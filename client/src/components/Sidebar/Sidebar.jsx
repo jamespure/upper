@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { Button, Modal, Nav, Tab } from 'react-bootstrap';
-import NewContactModal from '../NewContactModal/NewContactModal';
-import NewConversationModal from '../NewConversationModal/NewConversationModal';
-import './sidebar.css'
+import React, { useState } from "react";
+import { Button, Modal, Nav, Tab } from "react-bootstrap";
+import Contacts from "../Contacts/Contacts";
+import NewContactModal from "../NewContactModal/NewContactModal";
+import NewConversationModal from "../NewConversationModal/NewConversationModal";
+import "./sidebar.css";
 
+const CONVERSATIONS_KEY = "conversions";
+const CONTACTS_KEY = "contacts";
 
-const CONVERSATIONS_KEY = 'conversions';
-const CONTACTS_KEY = 'contacts';
+const Sidebar = ({ id }) => {
+  const [activeKey, setActiveKey] = useState(CONVERSATIONS_KEY);
+  const [modalOpen, setModalOpen] = useState(false);
+  const conversationsOpen = activeKey === CONVERSATIONS_KEY;
 
-const Sidebar = ({id}) => {
-    const [activeKey, setActiveKey] = useState(CONVERSATIONS_KEY);
-    const [modalOpen, setModalOpen] = useState(false);
-    const conversationsOpen = activeKey === CONVERSATIONS_KEY;
-
-    const closeModal = () => {
-        setModalOpen(false)
-    }
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <aside className="d-flex flex-column sidebar">
@@ -30,7 +30,9 @@ const Sidebar = ({id}) => {
         </Nav>
         <Tab.Content className="border-right overflow-auto flex-grow-1">
           <Tab.Pane eventKey={CONVERSATIONS_KEY}></Tab.Pane>
-          <Tab.Pane eventKey={CONTACTS_KEY}></Tab.Pane>
+          <Tab.Pane eventKey={CONTACTS_KEY}>
+            <Contacts />
+          </Tab.Pane>
         </Tab.Content>
         <div className="p-2 border-top border-right small">
           Your Id: <span className="text-muted">{id}</span>
