@@ -1,6 +1,6 @@
 const io = require("socket.io")(3001, {
   cors: {
-    origin: "https://relaxed-swirles-45748d.netlify.app",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
