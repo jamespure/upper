@@ -12,6 +12,9 @@ export function SocketProvider({ id, children }) {
 
   useEffect(() => {
     const newSocket = io("https://upper-socket-io.herokuapp.com/", {
+      cors: {
+        origin: "*",
+      },
       query: { id },
     });
     setSocket(newSocket);
