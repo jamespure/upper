@@ -1,7 +1,8 @@
 const io = require("socket.io")(3001, {
-  credentials: true,
-  extraHeaders: {
-    'Access-Control-Allow-Origin': "*",
+  transports: ['websocket', 'polling', 'flashsocket'],
+  cors: {
+    origin: "*",
+    credentials: true,
   },
 });
 
