@@ -1,6 +1,6 @@
 const io = require("socket.io")(3001, {
-  extraHeaders: {
-    "Access-Control-Allow-Origin": "*",
+  cors: {
+    origin: "*",
   },
 });
 io.use(cors());
