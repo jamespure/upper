@@ -11,7 +11,7 @@ export function SocketProvider({ id, children }) {
   const [socket, setSocket] = useState();
 
   useEffect(() => {
-    const newSocket = io("https://upper-socket-io.herokuapp.com", {
+    const newSocket = io("https://upper-socket-io.herokuapp.com:3001", {
       query: { id },
     });
     setSocket(newSocket);
