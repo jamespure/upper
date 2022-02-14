@@ -67,9 +67,9 @@ export default function OpenConversation() {
               onChange={(e) => setText(e.target.value)}
               style={{ height: "75px", resize: "none" }}
             />
-            <InputGroup.Append>
+            <InputGroup>
               <Button type="submit">Send</Button>
-            </InputGroup.Append>
+            </InputGroup>
           </InputGroup>
         </Form.Group>
       </Form>

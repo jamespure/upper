@@ -1,8 +1,9 @@
-const io = require("socket.io")(5000, {
+const io = require("socket.io")(3001, {
   cors: {
     origin: "*",
   },
 });
+
 io.on("connection", (socket) => {
   const id = socket.handshake.query.id;
   socket.join(id);
