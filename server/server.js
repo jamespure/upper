@@ -2,6 +2,7 @@ const io = require("socket.io")(3001, {
   transports: ['websocket', 'polling', 'flashsocket'],
   cors: {
     origin: "*",
+    method: ["GET","POST"],
     credentials: true,
   },
 });
