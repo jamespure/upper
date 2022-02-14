@@ -1,7 +1,7 @@
-const io = require("socket.io")(3001, {
-  cors: {
-    origin: "*",
-  },
+const io = require("socket.io")(3001, 
+  { 
+    transports: ['websocket', 'polling', 'flashsocket'],
+    cors: {origin: '*'}
 });
 io.use(cors());
 io.on("connection", (socket) => {
