@@ -3,7 +3,7 @@ const io = require("socket.io")(3001, {
     "Access-Control-Allow-Origin": "*",
   },
 });
-
+io.use(cors());
 io.on("connection", (socket) => {
   const id = socket.handshake.query.id;
   socket.join(id);
