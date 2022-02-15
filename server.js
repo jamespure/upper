@@ -10,7 +10,8 @@ app.use(cors());
 const http = createServer(app);
 const io = new Server(http,{
   cors: {
-    origin: '*'
+    origin: '*',
+    method: ['GET', 'POST']
   }
 });
 
@@ -32,5 +33,5 @@ io.on("connection", (socket) => {
 });
 
 http.listen(process.env.PORT, () => {
-  console.log("Socket is running on" + process.env.PORT);
+  console.log("Socket is running on" + ' ' + process.env.PORT);
 });
