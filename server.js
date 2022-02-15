@@ -1,10 +1,16 @@
-const io = require("socket.io")(3001, { 
-    cors: {
-      origin: '*',
-      method: ['GET', 'POST']
-    }
-});
-io.use(cors());
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+
+const app = express();
+app.use(cors());
+app.use(dotenv());
+
+const http = createServer(app);
+const io = Server(http);
+
 io.on("connection", (socket) => {
   const id = socket.handshake.query.id;
   socket.join(id);
@@ -20,4 +26,8 @@ io.on("connection", (socket) => {
       });
     });
   });
+});
+
+http.listen(process.env.PORT, () => {
+  console.log("Socket is running on" + process.env.PORT);
 });
