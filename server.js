@@ -1,15 +1,14 @@
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
+require("dotenv");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 
 const app = express();
 app.use(cors());
-app.use(dotenv());
 
 const http = createServer(app);
-const io = Server(http);
+const io = new Server(http);
 
 io.on("connection", (socket) => {
   const id = socket.handshake.query.id;
