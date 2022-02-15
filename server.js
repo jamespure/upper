@@ -8,7 +8,11 @@ const app = express();
 app.use(cors());
 
 const http = createServer(app);
-const io = new Server(http);
+const io = new Server(http,{
+  cors: {
+    origin: '*'
+  }
+});
 
 io.on("connection", (socket) => {
   const id = socket.handshake.query.id;
